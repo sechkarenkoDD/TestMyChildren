@@ -151,8 +151,8 @@ extension ChildrenListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ChildCell.identifier) as! ChildCell
         let name = viewModel.children[indexPath.row].name
-        let surname = viewModel.children[indexPath.row].years
-        cell.configure(name: name, years: surname)
+        let years = viewModel.children[indexPath.row].years
+        cell.configure(name: name, years: years)
         return cell
     }
 }
