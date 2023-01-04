@@ -11,7 +11,7 @@ class ChildCell: UITableViewCell {
     static let identifier = "id"
 
     private let nameTextFieldCall = UITextField(placeholder: "Имя")
-    private let yearsTextFieldCall = UITextField(placeholder: "Возраст")
+    private let yearsTextFieldCall = UITextField(placeholder: "Возраст", keyboardType: .numberPad)
     
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

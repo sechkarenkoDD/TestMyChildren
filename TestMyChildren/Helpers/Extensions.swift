@@ -8,11 +8,12 @@
 import UIKit
 
 extension UITextField {
-    convenience init(placeholder: String) {
+    convenience init(placeholder: String, keyboardType: UIKeyboardType = .default) {
         self.init(frame: .zero)
         self.translatesAutoresizingMaskIntoConstraints = false
         self.placeholder = placeholder
         self.borderStyle = .roundedRect
+        self.keyboardType = keyboardType
     }
 }
 

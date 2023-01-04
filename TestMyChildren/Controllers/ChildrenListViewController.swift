@@ -12,7 +12,7 @@ class ChildrenListViewController: UIViewController {
     private let personalDateLabel = UILabel(text: "Персональные данные")
     
     private let nameTextField = UITextField(placeholder: "Имя")
-    private let yearsTextField = UITextField(placeholder: "Возраст")
+    private let yearsTextField = UITextField(placeholder: "Возраст", keyboardType: .numberPad)
     private let alert = UIAlertController(title: "Alert", message: "Message", preferredStyle: .actionSheet)
     
     private let stackView: UIStackView = {
@@ -50,6 +50,7 @@ class ChildrenListViewController: UIViewController {
         setupTableView()
         setupTargets()
         setupAlert()
+        addTapGestureToHideKeyboard()
     }
     
     private func setupSubViews() {
@@ -143,6 +144,13 @@ class ChildrenListViewController: UIViewController {
     }
 }
 
+extension ChildrenListViewController {
+    private func addTapGestureToHideKeyboard() {
+            let tapGesture = UITapGestureRecognizer(target: view, action: #selector(view.endEditing))
+            view.addGestureRecognizer(tapGesture)
+        }
+}
+
 extension ChildrenListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         viewModel.children.count
@@ -158,7 +166,6 @@ extension ChildrenListViewController: UITableViewDataSource {
 }
 
 extension ChildrenListViewController: UITableViewDelegate {
-    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             DispatchQueue.main.async {
